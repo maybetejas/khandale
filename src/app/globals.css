@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
+/* ========================================
+   GLOBAL VARIABLES — KHANDALE OS THEME
+   ======================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand colors */
+  --text: #d8bb74;
+  --background: #0f0f0f;
+  --primary: #f4ca64;
+  --secondary: #f3ebd8;
+
+  /* Default accent (components can override) */
+  --accent: #ad14ff;
+
+  /* Shadows & glow softness */
+  --glow-soft: rgba(255, 255, 255, 0.15);
+  --glow-strong: rgba(255, 255, 255, 0.4);
+
+  /* Base spacing scale for responsiveness */
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.2rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* ========================================
+   DARK MODE FALLBACK IF NEEDED
+   ======================================== */
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fafafa;
+    --text: #222222;
   }
 }
 
+/* ========================================
+   GLOBAL BODY RESET
+   ======================================== */
 body {
+  margin: 0;
+  padding: 0;
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Disable selection on most UI */
+* {
+  user-select: none;
+}
+
+.text-selectable {
+  user-select: text;
+}
+
+/* ========================================
+   SIMPLE UTILITY: glow + text glow
+   ======================================== */
+.glow {
+  box-shadow: 0 0 10px var(--glow-strong);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px var(--glow-strong);
+}
+
+/* ========================================
+   RESPONSIVE SCALING (ROOT SIZE)
+   ======================================== */
+
+/* Large screens (default) */
+html {
+  font-size: 16px;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+
+  :root {
+    --space-md: 1rem;
+    --space-lg: 1.6rem;
+    --space-xl: 2.2rem;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  :root {
+    --space-md: 0.9rem;
+    --space-lg: 1.4rem;
+    --space-xl: 2rem;
+  }
+}
+
+/* Mobile portrait (small phones) */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  :root {
+    --space-md: 0.8rem;
+    --space-lg: 1.2rem;
+    --space-xl: 1.6rem;
+  }
 }
