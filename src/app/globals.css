@@ -1,122 +1,95 @@
-@import "tailwindcss";
-
-/* ========================================
-   GLOBAL VARIABLES — KHANDALE OS THEME
-   ======================================== */
 :root {
-  /* Brand colors */
+  /* --- Core Brand --- */
+  --bg: #0f0f0f;
   --text: #d8bb74;
-  --background: #0f0f0f;
-  --primary: #f4ca64;
-  --secondary: #f3ebd8;
+  --gold: #f4ca64;
+  --gold-soft: #f3ebd8;
 
-  /* Default accent (components can override) */
-  --accent: #ad14ff;
+  /* --- Accent (mutable) --- */
+  --accent: #7df9ff; /* default, overridden per card/page */
 
-  /* Shadows & glow softness */
-  --glow-soft: rgba(255, 255, 255, 0.15);
-  --glow-strong: rgba(255, 255, 255, 0.4);
+  /* --- Typography --- */
+  --font-base: 14px;
+  --font-sm: 12px;
+  --font-lg: 16px;
+  --font-xl: 20px;
+  --font-xxl: 28px;
 
-  /* Base spacing scale for responsiveness */
-  --space-xs: 0.4rem;
-  --space-sm: 0.8rem;
-  --space-md: 1.2rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
+  /* --- Spacing (OS rhythm) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
 
-  /* Typography */
-  --font-main: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* --- Borders & Lines --- */
+  --line-thin: 1px;
+  --line-thick: 2px;
+
+  /* --- Radius (very restrained) --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
 }
 
-/* ========================================
-   DARK MODE FALLBACK IF NEEDED
-   ======================================== */
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #fafafa;
-    --text: #222222;
-  }
+/* =========================
+   BASE RESET
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* ========================================
-   GLOBAL BODY RESET
-   ======================================== */
+html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--background);
+  background: var(--bg);
   color: var(--text);
-  font-family: var(--font-main);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--font-base);
+font-family: "Electrolize", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Disable selection on most UI */
-* {
-  user-select: none;
+/* =========================
+   OS TEXT HIERARCHY
+   ========================= */
+
+h1 {
+  font-size: var(--font-xxl);
+  letter-spacing: 0.04em;
 }
 
-.text-selectable {
-  user-select: text;
+h2 {
+  font-size: var(--font-xl);
+  letter-spacing: 0.03em;
 }
 
-/* ========================================
-   SIMPLE UTILITY: glow + text glow
-   ======================================== */
-.glow {
-  box-shadow: 0 0 10px var(--glow-strong);
+p {
+  font-size: var(--font-base);
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
-.text-glow {
-  text-shadow: 0 0 10px var(--glow-strong);
-}
+/* =========================
+   RESPONSIVE SCALING
+   ========================= */
 
-/* ========================================
-   RESPONSIVE SCALING (ROOT SIZE)
-   ======================================== */
-
-/* Large screens (default) */
-html {
-  font-size: 16px;
-}
-
-/* Tablets */
-@media (max-width: 1024px) {
-  html {
-    font-size: 15px;
-  }
-
+@media (min-width: 768px) {
   :root {
-    --space-md: 1rem;
-    --space-lg: 1.6rem;
-    --space-xl: 2.2rem;
+    --font-base: 15px;
+    --font-xl: 22px;
+    --font-xxl: 32px;
   }
 }
 
-/* Mobile landscape */
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-
+@media (min-width: 1024px) {
   :root {
-    --space-md: 0.9rem;
-    --space-lg: 1.4rem;
-    --space-xl: 2rem;
-  }
-}
-
-/* Mobile portrait (small phones) */
-@media (max-width: 480px) {
-  html {
-    font-size: 13px;
-  }
-
-  :root {
-    --space-md: 0.8rem;
-    --space-lg: 1.2rem;
-    --space-xl: 1.6rem;
+    --font-base: 16px;
+    --font-xl: 24px;
+    --font-xxl: 36px;
   }
 }

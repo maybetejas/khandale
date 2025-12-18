@@ -1,10 +1,17 @@
+import CharacterCard from "./ui/CharacterCard"
+
 export default function Home() {
- 
+
   return (
-    <div className="cyber-card accent-purple">
-      hello world
-      <button>hell</button>
-    </div>
+    <main>
+      <div className="dashboard">
+        <CharacterCard />
+        <div>
+
+        </div>
+      </div>
+    </main>
+
   )
 
 }
