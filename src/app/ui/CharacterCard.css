@@ -4,7 +4,7 @@
 
 .character-card {
   position: relative;
-  width: 100%;
+  width: min(420px, 100%);
   max-width: 380px;
   margin: 0 auto;
   padding: var(--space-6) var(--space-4);
@@ -58,7 +58,7 @@
 
   clip-path: inherit;
 
-  border: 0.6px solid color-mix(in srgb, var(--primary) 40%, transparent);
+
 
   z-index: 0;
 }
@@ -264,3 +264,4 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+

@@ -1,80 +1,57 @@
 import CharacterCard from "./ui/CharacterCard"
 import MenuCard from "./ui/MenuCard"
 
+
 export default function Home() {
   const menuCards = [
-    {
-      title: "SKILLS TREE",
-      tagline: "// SYSTEM UPGRADE",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "PROJECT DELTA",
-      tagline: "// HIGH PRIORITY",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "MISSION LOG",
-      tagline: "// ARCHIVE",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "ASSET VAULT",
-      tagline: "// STORAGE",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "CONTACT NODE",
-      tagline: "// COMMUNICATION",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "EXPERIMENTS",
-      tagline: "// LAB MODE",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "DATA CORE",
-      tagline: "// PROCESSING",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "TERMINAL",
-      tagline: "// DIRECT ACCESS",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "ANALYTICS",
-      tagline: "// INSIGHTS",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "SECURITY",
-      tagline: "// ENCRYPTED",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "ROADMAP",
-      tagline: "// FUTURE OPS",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
-    {
-      title: "ARCHIVE",
-      tagline: "// HISTORY",
-      color: "#b88cff",
-      icon: "/ss.svg",
-    },
+   {
+    title: "PROJECTS",
+    tagline: "// CASE STUDIES",
+    color: "#b88cff",
+    icon: "/PROJECTS.svg",
+  },
+  {
+    title: "SKILLS",
+    tagline: "// TECH STACK",
+    color: "#b88cff",
+    icon: "/SKILLS.svg",
+  },
+  {
+    title: "EXPERIENCE",
+    tagline: "// WORK HISTORY",
+    color: "#b88cff",
+    icon: "/EXPERIENCE.svg",
+  },
+  {
+    title: "SERVICES",
+    tagline: "// WHAT I OFFER",
+    color: "#b88cff",
+    icon: "/SERVICES.svg",
+  },
+  {
+    title: "BLOG",
+    tagline: "// WRITING",
+    color: "#b88cff",
+    icon: "/BLOGS.svg",
+  },
+  {
+    title: "EXPERIMENTS",
+    tagline: "// SIDE PROJECTS",
+    color: "#b88cff",
+    icon: "/EXPERIMENTS.svg",
+  },
+  {
+    title: "RESUME",
+    tagline: "// DOWNLOAD",
+    color: "#b88cff",
+    icon: "/RESUME.svg",
+  },
+  {
+    title: "CONTACT",
+    tagline: "// GET IN TOUCH",
+    color: "#b88cff",
+    icon: "/CONTACT.svg",
+  },
   ];
 
   return (

@@ -112,15 +112,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--card-accent);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .menu-card__icon svg {
   width: 28px;
   height: 28px;
-  fill: currentColor;
-  stroke: currentColor;
+  fill: white;
+  stroke: white;
 }
 
 /* =========================================
@@ -154,6 +153,10 @@
     drop-shadow(0 0 14px var(--card-accent));
 }
 
+.menu-card__icon img {
+  filter: invert(56%) sepia(83%) saturate(748%) hue-rotate(220deg) brightness(95%) contrast(95%);
+}
+
 /* =========================================
    IDLE MICRO-PULSE
    ========================================= */
@@ -176,4 +179,20 @@
 @keyframes futuristicSweep {
   0% { transform: translateX(-140%); }
   100% { transform: translateX(140%); }
+}
+
+@media (max-width: 768px) {
+
+  .menu-card {
+    padding: 10px 12px;
+  }
+
+  .menu-card__title {
+    font-size: 14px;
+  }
+
+  .menu-card__tag {
+    font-size: 10px;
+  }
+
 }
