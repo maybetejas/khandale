@@ -1,0 +1,179 @@
+/* =========================================
+   MENU CARD — SYSTEM MODULE (MATCH SHAPE)
+   ========================================= */
+
+.menu-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 22px 26px;
+  background: rgba(12, 12, 18, 0.65);
+  font-family: "Electrolize", system-ui, sans-serif;
+  overflow: hidden;
+  transition: transform 0.25s ease;
+
+  /* SAME SHAPE AS CHARACTER CARD */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+
+  animation: idlePulse 8s ease-in-out infinite;
+}
+
+/* =========================================
+   FRAME (CONTAINED GLOW)
+   ========================================= */
+
+.menu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  clip-path: inherit;
+
+  border: 1px solid var(--card-accent);
+
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--card-accent) 60%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--card-accent) 25%, transparent);
+
+  transition: box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+/* =========================================
+   FUTURISTIC ENERGY SWEEP
+   ========================================= */
+
+.menu-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--card-accent) 60%, transparent) 50%,
+    transparent 70%
+  );
+
+  opacity: 0;
+  transform: translateX(-140%);
+  z-index: 0;
+}
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.menu-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* =========================================
+   TEXT
+   ========================================= */
+
+.menu-card__title {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--card-accent);
+  transition: text-shadow 0.3s ease;
+}
+
+.menu-card__tag {
+  margin: 4px 0 0 0;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+}
+
+/* =========================================
+   ICON
+   ========================================= */
+
+.menu-card__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.menu-card__icon svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* =========================================
+   HOVER STATE
+   ========================================= */
+
+.menu-card:hover {
+  transform: translateY(-4px);
+}
+
+.menu-card:hover::before {
+  box-shadow:
+    0 0 18px var(--card-accent),
+    inset 0 0 22px color-mix(in srgb, var(--card-accent) 40%, transparent);
+}
+
+.menu-card:hover::after {
+  opacity: 0.5;
+  animation: futuristicSweep 1.1s ease forwards;
+}
+
+.menu-card:hover .menu-card__title {
+  text-shadow:
+    0 0 8px color-mix(in srgb, var(--card-accent) 70%, transparent);
+}
+
+.menu-card:hover .menu-card__icon {
+  transform: scale(1.12);
+  filter:
+    drop-shadow(0 0 6px var(--card-accent))
+    drop-shadow(0 0 14px var(--card-accent));
+}
+
+/* =========================================
+   IDLE MICRO-PULSE
+   ========================================= */
+
+@keyframes idlePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px color-mix(in srgb, var(--card-accent) 50%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 14px color-mix(in srgb, var(--card-accent) 65%, transparent);
+  }
+}
+
+/* =========================================
+   SWEEP ANIMATION
+   ========================================= */
+
+@keyframes futuristicSweep {
+  0% { transform: translateX(-140%); }
+  100% { transform: translateX(140%); }
+}

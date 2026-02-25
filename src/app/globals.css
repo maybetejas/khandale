@@ -1,21 +1,36 @@
+/* ======================================================
+   GLOBAL DESIGN TOKENS — tejas.lab
+   ====================================================== */
+
 :root {
-  /* --- Core Brand --- */
-  --bg: #0f0f0f;
-  --text: #d8bb74;
-  --gold: #f4ca64;
-  --gold-soft: #f3ebd8;
+  --background: #07070c;
+  --foreground: #e6dcff;
 
-  /* --- Accent (mutable) --- */
-  --accent: #7df9ff; /* default, overridden per card/page */
+  --primary: #9b5cff;
+  --primary-soft: #b88cff;
 
-  /* --- Typography --- */
+  --secondary: #6f4cff;
+  --secondary-soft: #8a6cff;
+
+  --accent-purple: #b46cff;
+  --accent-pink: #ff6ad5;
+  --accent-cyan: #4df0ff;
+  --accent-blue: #6aa9ff;
+
+  --border-subtle: rgba(155, 92, 255, 0.25);
+  --border-strong: rgba(155, 92, 255, 0.55);
+
+  --glow-primary: rgba(155, 92, 255, 0.6);
+  --glow-soft: rgba(155, 92, 255, 0.35);
+
+  --text-muted: rgba(230, 220, 255, 0.6);
+
   --font-base: 14px;
   --font-sm: 12px;
   --font-lg: 16px;
   --font-xl: 20px;
   --font-xxl: 28px;
 
-  /* --- Spacing (OS rhythm) --- */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -24,18 +39,13 @@
   --space-6: 32px;
   --space-7: 48px;
 
-  /* --- Borders & Lines --- */
   --line-thin: 1px;
   --line-thick: 2px;
-
-  /* --- Radius (very restrained) --- */
-  --radius-sm: 4px;
-  --radius-md: 8px;
 }
 
-/* =========================
+/* ======================================================
    BASE RESET
-   ========================= */
+   ====================================================== */
 
 *,
 *::before,
@@ -47,25 +57,132 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
-  color: var(--text);
   font-size: var(--font-base);
-font-family: "Electrolize", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Electrolize", system-ui, sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+}/* ======================================================
+   AMBIENT SYSTEM — MINIMAL & CINEMATIC
+   ====================================================== */
+
+html,
+body {
+  background: #050509;
 }
 
-/* =========================
-   OS TEXT HIERARCHY
-   ========================= */
+/* Depth vignette */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+   rgba(160, 107, 255, 0.06)
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(80, 120, 200, 0.04),
+      transparent 60%
+    );
+
+}
+
+/* Ultra subtle animated energy vein */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  background: linear-gradient(
+    110deg,
+    transparent 45%,
+    rgba(255,255,255,0.015),
+    transparent 55%
+  );
+
+  animation: ambientDrift 28s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+/* Very faint noise texture simulation */
+
+main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  background-image: 
+    radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+
+  background-size: 3px 3px;
+  opacity: 0.2;
+}
+
+/* Keep UI above ambient */
+
+main {
+  position: relative;
+  z-index: 10;
+}
+
+/* Slow organic drift */
+
+@keyframes ambientDrift {
+  0%   { transform: translateX(-10%); }
+  50%  { transform: translateX(10%); }
+  100% { transform: translateX(-10%); }
+}
+
+
+/* ======================================================
+   ANIMATIONS
+   ====================================================== */
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 80px 80px, 80px 80px;
+  }
+}
+
+@keyframes slowScan {
+  0% { transform: translateX(-30%); }
+  50% { transform: translateX(30%); }
+  100% { transform: translateX(-30%); }
+}
+
+@keyframes microFlicker {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.015); }
+}
+
+/* ======================================================
+   TEXT HIERARCHY
+   ====================================================== */
 
 h1 {
   font-size: var(--font-xxl);
   letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 h2 {
   font-size: var(--font-xl);
   letter-spacing: 0.03em;
+  font-weight: 400;
 }
 
 p {
@@ -74,22 +191,55 @@ p {
   opacity: 0.9;
 }
 
-/* =========================
-   RESPONSIVE SCALING
-   ========================= */
+/* ======================================================
+   LAYOUT
+   ====================================================== */
 
-@media (min-width: 768px) {
-  :root {
-    --font-base: 15px;
-    --font-xl: 22px;
-    --font-xxl: 32px;
-  }
+main {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (min-width: 1024px) {
-  :root {
-    --font-base: 16px;
-    --font-xl: 24px;
-    --font-xxl: 36px;
-  }
+.dashboard {
+  display: flex;
+  gap: 5%;
+}
+
+#cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 120px;
+  gap: 20px;
+}
+
+/* ==========================================
+   BACKGROUND CANVAS LAYER CONTROL
+========================================== */
+
+body {
+  position: relative;
+  z-index: 0;
+}
+
+body::before {
+  z-index: 1;  /* vignette */
+}
+
+body::after {
+  z-index: 2;  /* ambient drift */
+}
+
+main::before {
+  z-index: 3;  /* noise */
+}
+
+/* Glow for fractal canvas */
+canvas {
+  filter:
+    drop-shadow(0 0 12px rgba(160, 107, 255, 0.45))
+    drop-shadow(0 0 28px rgba(160, 107, 255, 0.25));
 }

@@ -1,4 +1,3 @@
-// src/ui/CharacterCard.jsx
 import "./CharacterCard.css";
 
 export default function CharacterCard() {
@@ -10,7 +9,7 @@ export default function CharacterCard() {
         <div className="character-card__avatar-frame">
           {/* image goes here later */}
           <img
-            src="https://media.tenor.com/RvfX49xRRYoAAAAM/silly-silly-anime.gif"
+            src="pfp.png"
             alt="Teesha system portrait"
             className="character-card__avatar-image"
           />
@@ -20,7 +19,7 @@ export default function CharacterCard() {
       {/* Identity */}
       <div className="character-card__identity">
         <h1 className="character-card__name">
-          TESHA
+          TEESHA
         </h1>
 
         <p className="character-card__role">

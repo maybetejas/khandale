@@ -1,7 +1,10 @@
 import "./globals.css";
+import "../app/ui/BackgroundCanvas.jsx"
+import BackgroundCanvas from "../app/ui/BackgroundCanvas.jsx";
+
 
 export const metadata = {
-  title: "tejas.lab",
+  title: "teesha.kab",
   description: "Selected work and experiments by Tejas",
 
   // openGraph: {
@@ -44,6 +47,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <BackgroundCanvas />
         <main>{children}</main>
       </body>
     </html>
